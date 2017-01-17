@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>react</title>
+</head>
+<body>
+	<div id="app11">
+		
+	</div>
+	<script src="react-15.3.1/build/react.min.js"></script>
+	<script src="react-15.3.1/build/react-dom.min.js"></script>
+	<script src="babel.min.js"></script>
+	<script type="text/babel">
+		var MessageBox = React.createClass({
+			getInitialState:function(){
+				return{
+					isVisible:true,
+					subMsg:[
+						'我会代码搬砖',
+						'以及花式搬砖',
+						'不说了,工头来了.......'
+					]
+				}
+
+			},
+			render:function(){
+				return (
+					<div>
+						<h1>{this.props.title}</h1>
+						<Submessage message={this.state.subMsg}/>
+					</div>
+					)
+			}
+		});
+		var Submessage = React.createClass({
+			propTypes:{
+				message:React.PropTypes.array.isRequired
+			},
+			getDefaultProps:function(){
+				return{
+					message:["默认的子消息"]
+				}
+			},
+			render:function(){
+				var msgs = [];
+				this.props.message.forEach(function(msg, index){
+					msgs.push(
+						<p>码农说: {msg}</p>
+					)
+				})
+				return (
+						<div>{msgs}</div>
+					)
+			}
+		});
+
+		var title = 'hello world!!(qeqw)';
+		var msg = ReactDOM.render(<MessageBox title={title}/>,
+			document.getElementById('app11'),
+			function(){
+				console.log('Done!!!!')
+			}
+		)
+	</script>
+
+	
+</body>
+</html>

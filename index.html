@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>react</title>
+</head>
+<body>
+	<div id="app11">
+		
+	</div>
+	<script src="react-15.3.1/build/react.min.js"></script>
+	<script src="react-15.3.1/build/react-dom.min.js"></script>
+	<script src="babel.min.js"></script>
+	<script type="text/babel">
+		var MessageBox = React.createClass({
+			getInitialState:function(){
+				return{
+					isVisible:true,
+					titleMessage:'你好世界(来自state)'
+				}
+
+			},
+			render:function(){
+				var styleObj={
+					display:this.state.isVisible ? 'block' : 'none',
+				}
+				return (
+					<div>
+						<h1 style={styleObj}>{this.state.titleMessage}</h1>
+						<Submessage/>
+					</div>
+					)
+			}
+		});
+		var Submessage = React.createClass({
+			render:function(){
+				return (
+						<h3>write code is very nice</h3>
+					)
+			}
+		});
+
+
+		var msg = ReactDOM.render(<MessageBox/>,
+			document.getElementById('app11'),
+			function(){
+				console.log('Done!!!!')
+			}
+		)
+	</script>
+
+	
+</body>
+</html>
